@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+
+  <!-- Fondo redondeado — terracotta puro -->
+  <rect width="32" height="32" rx="8" fill="#D36C4F"/>
+
+  <!-- Highlight sutil en esquina superior izquierda -->
+  <rect width="32" height="32" rx="8" fill="url(#shine)" opacity="0.2"/>
+
+  <!-- ══ FORK (white, left side centered ~x=11) ══ -->
+  <!-- Tine 1 (left) -->
+  <line x1="8"  y1="5" x2="8"  y2="11" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Tine 2 (center) -->
+  <line x1="11" y1="5" x2="11" y2="11" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Tine 3 (right) -->
+  <line x1="14" y1="5" x2="14" y2="11" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Neck arch connecting tines to handle -->
+  <path d="M8 11 Q8 14 11 14 Q14 14 14 11"
+        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Handle -->
+  <line x1="11" y1="14" x2="11" y2="27" stroke="white" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- ══ KNIFE (white, right side centered ~x=21) ══ -->
+  <!-- Spine (straight left edge of blade) -->
+  <line x1="20" y1="5" x2="20" y2="17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Cutting edge (curved right side of blade) -->
+  <path d="M20 5 Q25 9.5 20 17"
+        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bolster / guard -->
+  <line x1="18" y1="17" x2="22" y2="17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Handle -->
+  <line x1="20" y1="17" x2="20" y2="27" stroke="white" stroke-width="2" stroke-linecap="round"/>
+
+  <defs>
+    <linearGradient id="shine" x1="0" y1="0" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

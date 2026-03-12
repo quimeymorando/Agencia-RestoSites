@@ -1,0 +1,8 @@
+# RestoSites — robots.txt
+# Permite que todos los motores de búsqueda indexen el sitio
+
+User-agent: *
+Allow: /
+
+# Sitemap multilingüe (EN / ES / PT)
+Sitemap: https://restosites.com/sitemap.xml
