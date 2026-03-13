@@ -76,9 +76,90 @@ export interface Translations {
   plan_advanced_badge: string;
   plan_premium: string;
   plan_premium_desc: string;
+  plan_premium_badge: string;
   pricing_cta_start: string;
   pricing_cta_demo: string;
   pricing_delivered: string;
+
+  // Pricing plans features
+  plan_basic_f1: string;
+  plan_basic_f2: string;
+  plan_basic_f3: string;
+  plan_basic_f4: string;
+  plan_basic_f5: string;
+  plan_basic_f6: string;
+  plan_basic_f7: string;
+  plan_basic_f8: string;
+
+  plan_adv_f1: string;
+  plan_adv_f2: string;
+  plan_adv_f3: string;
+  plan_adv_f4: string;
+  plan_adv_f5: string;
+  plan_adv_f6: string;
+  plan_adv_f7: string;
+  plan_adv_f8: string;
+
+  plan_prem_f1: string;
+  plan_prem_f2: string;
+  plan_prem_f3: string;
+  plan_prem_f4: string;
+  plan_prem_f5: string;
+  plan_prem_f6: string;
+  plan_prem_f7: string;
+  plan_prem_f8: string;
+  plan_prem_f9: string;
+
+  // Features Breakdown
+  feat_title: string;
+  feat_subtitle: string;
+  
+  feat_basic_title: string;
+  feat_basic_1_name: string;
+  feat_basic_1_desc: string;
+  feat_basic_2_name: string;
+  feat_basic_2_desc: string;
+  feat_basic_3_name: string;
+  feat_basic_3_desc: string;
+  feat_basic_4_name: string;
+  feat_basic_4_desc: string;
+  feat_basic_5_name: string;
+  feat_basic_5_desc: string;
+  feat_basic_6_name: string;
+  feat_basic_6_desc: string;
+
+  feat_adv_title: string;
+  feat_adv_includes: string;
+  feat_adv_1_name: string;
+  feat_adv_1_desc: string;
+  feat_adv_2_name: string;
+  feat_adv_2_desc: string;
+  feat_adv_3_name: string;
+  feat_adv_3_desc: string;
+  feat_adv_4_name: string;
+  feat_adv_4_desc: string;
+  feat_adv_5_name: string;
+  feat_adv_5_desc: string;
+  feat_adv_6_name: string;
+  feat_adv_6_desc: string;
+
+  feat_prem_title: string;
+  feat_prem_includes: string;
+  feat_prem_1_name: string;
+  feat_prem_1_desc: string;
+  feat_prem_2_name: string;
+  feat_prem_2_desc: string;
+  feat_prem_3_name: string;
+  feat_prem_3_desc: string;
+  feat_prem_4_name: string;
+  feat_prem_4_desc: string;
+  feat_prem_5_name: string;
+  feat_prem_5_desc: string;
+  feat_prem_6_name: string;
+  feat_prem_6_desc: string;
+
+  pricing_consultation: string;
+
 
   // HowItWorks
   how_title: string;
@@ -215,9 +296,88 @@ export const translations: Record<Language, Translations> = {
     plan_advanced_badge: "Most Popular",
     plan_premium: "Premium",
     plan_premium_desc: "Custom design, full SEO and priority support.",
+    plan_premium_badge: "Best Value",
     pricing_cta_start: "Get Started",
     pricing_cta_demo: "Book Demo",
     pricing_delivered: "⚡ Delivered in 3–5 days",
+
+    plan_basic_f1: "1-page restaurant website",
+    plan_basic_f2: "Menu section",
+    plan_basic_f3: "Photo gallery",
+    plan_basic_f4: "Google Maps integration",
+    plan_basic_f5: "WhatsApp reservations",
+    plan_basic_f6: "Instagram link",
+    plan_basic_f7: "Basic SEO setup",
+    plan_basic_f8: "QR menu",
+
+    plan_adv_f1: "Up to 3 pages",
+    plan_adv_f2: "Menu section & Gallery",
+    plan_adv_f3: "Google Maps",
+    plan_adv_f4: "WhatsApp reservations",
+    plan_adv_f5: "Instagram integration",
+    plan_adv_f6: "Improved SEO",
+    plan_adv_f7: "Smooth animations",
+    plan_adv_f8: "Mobile optimization",
+
+    plan_prem_f1: "Custom restaurant design",
+    plan_prem_f2: "Up to 5 pages website",
+    plan_prem_f3: "Advanced layout",
+    plan_prem_f4: "SEO + AI search optimization",
+    plan_prem_f5: "Online reservation system",
+    plan_prem_f6: "Performance optimization",
+    plan_prem_f7: "Mobile-first design",
+    plan_prem_f8: "Local search optimization",
+    plan_prem_f9: "Priority updates & support",
+
+    feat_title: "Everything Your Restaurant Needs to Grow Online",
+    feat_subtitle: "No tech headaches. No complicated tools. Just a powerful website designed to bring more customers to your restaurant.",
+    
+    feat_basic_title: "BASIC – Online Presence Starter",
+    feat_basic_1_name: "Modern Restaurant Website",
+    feat_basic_1_desc: "A clean and professional website designed specifically for restaurants.",
+    feat_basic_2_name: "Mobile Optimized Design",
+    feat_basic_2_desc: "Your website looks perfect on phones, tablets, and desktops.",
+    feat_basic_3_name: "Menu Showcase",
+    feat_basic_3_desc: "Display your menu in a clear and visually appealing format.",
+    feat_basic_4_name: "Contact & Location",
+    feat_basic_4_desc: "Customers can easily find your address, phone number, and opening hours.",
+    feat_basic_5_name: "Fast Loading Website",
+    feat_basic_5_desc: "Optimized performance so customers never leave because of slow loading.",
+    feat_basic_6_name: "Basic Local SEO Setup",
+    feat_basic_6_desc: "Initial optimization so your restaurant can appear in local Google searches.",
+
+    feat_adv_title: "ADVANCED – Conversion Focused",
+    feat_adv_includes: "Includes everything in Basic, plus:",
+    feat_adv_1_name: "Online Reservation System",
+    feat_adv_1_desc: "Allow customers to book tables directly from your website.",
+    feat_adv_2_name: "Interactive Menu Experience",
+    feat_adv_2_desc: "A more engaging and visually rich menu experience.",
+    feat_adv_3_name: "Image Gallery",
+    feat_adv_3_desc: "Showcase your restaurant atmosphere and dishes with beautiful photography.",
+    feat_adv_4_name: "Customer Reviews Integration",
+    feat_adv_4_desc: "Display reviews to increase trust and credibility.",
+    feat_adv_5_name: "Google Maps Integration",
+    feat_adv_5_desc: "Help customers easily find your location.",
+    feat_adv_6_name: "Advanced Local SEO Optimization",
+    feat_adv_6_desc: "Better visibility for searches like “restaurant near me”.",
+
+    feat_prem_title: "PREMIUM – Growth Engine",
+    feat_prem_includes: "Includes everything in Advanced, plus:",
+    feat_prem_1_name: "AI Table Booking Assistant",
+    feat_prem_1_desc: "Smart reservation assistance to simplify table bookings.",
+    feat_prem_2_name: "Multi-Language Website",
+    feat_prem_2_desc: "Serve international customers with multiple languages.",
+    feat_prem_3_name: "GEO + SEO Optimization",
+    feat_prem_3_desc: "Optimized for both search engines and AI-powered discovery platforms.",
+    feat_prem_4_name: "Smart Conversion Design",
+    feat_prem_4_desc: "Layouts designed to turn visitors into reservations.",
+    feat_prem_5_name: "Performance Optimization",
+    feat_prem_5_desc: "Advanced speed and performance improvements.",
+    feat_prem_6_name: "Priority Updates & Future Features",
+    feat_prem_6_desc: "Your website stays modern and optimized as technology evolves.",
+
+    pricing_consultation: "30-minute free consultation included with every package.",
+
 
     // HowItWorks
     how_title: "How We Build Your Restaurant Website",
@@ -353,9 +513,88 @@ export const translations: Record<Language, Translations> = {
     plan_advanced_badge: "Más Popular",
     plan_premium: "Premium",
     plan_premium_desc: "Diseño personalizado, SEO completo y soporte prioritario.",
+    plan_premium_badge: "Mejor Valor",
     pricing_cta_start: "Comenzar",
     pricing_cta_demo: "Agendar Demo",
     pricing_delivered: "⚡ Entrega en 3–5 días",
+
+    plan_basic_f1: "Sitio web de restaurante de 1 página",
+    plan_basic_f2: "Sección de menú",
+    plan_basic_f3: "Galería de fotos",
+    plan_basic_f4: "Integración de Google Maps",
+    plan_basic_f5: "Reservas por WhatsApp",
+    plan_basic_f6: "Enlace a Instagram",
+    plan_basic_f7: "Configuración SEO básica",
+    plan_basic_f8: "Menú QR",
+
+    plan_adv_f1: "Hasta 3 páginas locales",
+    plan_adv_f2: "Sección de Menú y Galería",
+    plan_adv_f3: "Google Maps integrado",
+    plan_adv_f4: "Reservas por WhatsApp integradas",
+    plan_adv_f5: "Integración con Instagram",
+    plan_adv_f6: "SEO mejorado",
+    plan_adv_f7: "Animaciones suaves",
+    plan_adv_f8: "Optimización móvil",
+
+    plan_prem_f1: "Diseño de restaurante personalizado",
+    plan_prem_f2: "Sitio web de hasta 5 páginas",
+    plan_prem_f3: "Diseño y estructura avanzados",
+    plan_prem_f4: "Optimización SEO + IA para búsquedas",
+    plan_prem_f5: "Sistema de reservas online",
+    plan_prem_f6: "Optimización de rendimiento premium",
+    plan_prem_f7: "Diseño Mobile-First",
+    plan_prem_f8: "Optimización para búsquedas locales",
+    plan_prem_f9: "Actualizaciones y soporte prioritario",
+
+    feat_title: "Todo lo que tu restaurante necesita para crecer online",
+    feat_subtitle: "Sin dolores de cabeza técnicos. Sin herramientas complicadas. Solo un potente sitio web diseñado para atraer más clientes a tu restaurante.",
+    
+    feat_basic_title: "BÁSICO – Starter Presencia Online",
+    feat_basic_1_name: "Sitio Web Moderno",
+    feat_basic_1_desc: "Un sitio web limpio y profesional diseñado específicamente para restaurantes.",
+    feat_basic_2_name: "Diseño Optimizado para Móviles",
+    feat_basic_2_desc: "Tu sitio web se verá perfecto en teléfonos, tablets y computadoras.",
+    feat_basic_3_name: "Muestra Tu Menú",
+    feat_basic_3_desc: "Muestra tu menú en un formato claro y visualmente atractivo.",
+    feat_basic_4_name: "Contacto y Ubicación",
+    feat_basic_4_desc: "Tus clientes encontrarán fácilmente tu dirección, teléfono y horarios.",
+    feat_basic_5_name: "Sitio de Carga Rápida",
+    feat_basic_5_desc: "Rendimiento optimizado para que los clientes no abandonen por lentitud.",
+    feat_basic_6_name: "Configuración Básica de SEO Local",
+    feat_basic_6_desc: "Optimización inicial para que aparezcas en las búsquedas locales de Google.",
+
+    feat_adv_title: "AVANZADO – Enfocado en Conversiones",
+    feat_adv_includes: "Incluye todo lo del plan Básico, además de:",
+    feat_adv_1_name: "Sistema de Reservas Online",
+    feat_adv_1_desc: "Permite a los clientes reservar mesas directamente desde tu sitio web.",
+    feat_adv_2_name: "Experiencia de Menú Interactiva",
+    feat_adv_2_desc: "Una experiencia de menú atractiva y rica visualmente.",
+    feat_adv_3_name: "Galería de Imágenes",
+    feat_adv_3_desc: "Muestra el ambiente de tu restaurante y tus platos con fotografías hermosas.",
+    feat_adv_4_name: "Integración de Reseñas",
+    feat_adv_4_desc: "Muestra reseñas para aumentar la confianza y la credibilidad.",
+    feat_adv_5_name: "Integración en Google Maps",
+    feat_adv_5_desc: "Ayuda a los clientes a encontrar fácilmente tu ubicación.",
+    feat_adv_6_name: "Optimización Avanzada de SEO Local",
+    feat_adv_6_desc: "Mayor visibilidad en búsquedas como “restaurante cerca de mí”.",
+
+    feat_prem_title: "PREMIUM – Motor de Crecimiento",
+    feat_prem_includes: "Incluye todo lo del plan Avanzado, además de:",
+    feat_prem_1_name: "Asistente Inteligente de Reservas",
+    feat_prem_1_desc: "Asistencia inteligente para reservas, para simplificar mesas reservadas.",
+    feat_prem_2_name: "Sitio Web Multilingüe",
+    feat_prem_2_desc: "Atiende a clientes internacionales con múltiples idiomas.",
+    feat_prem_3_name: "Optimización GEO + SEO",
+    feat_prem_3_desc: "Optimizado para motores de búsqueda y plataformas de descubrimiento por IA.",
+    feat_prem_4_name: "Diseño Inteligente de Conversión",
+    feat_prem_4_desc: "Diseños configurados para convertir visitantes en comensales.",
+    feat_prem_5_name: "Optimización Extrema de Rendimiento",
+    feat_prem_5_desc: "Velocidad avanzada y mejoras de rendimiento de carga alta.",
+    feat_prem_6_name: "Actualizaciones y Funciones Futuras Prioritarias",
+    feat_prem_6_desc: "Tu sitio web se mantiene moderno y optimizado al ritmo evolutivo de la tecnología.",
+
+    pricing_consultation: "Sesión de consulta gratuita de 30 minutos incluida en cualquier paquete.",
+
 
     // HowItWorks
     how_title: "Cómo Creamos tu Web de Restaurante",
@@ -491,9 +730,88 @@ export const translations: Record<Language, Translations> = {
     plan_advanced_badge: "Mais Popular",
     plan_premium: "Premium",
     plan_premium_desc: "Design personalizado, SEO completo e suporte prioritário.",
+    plan_premium_badge: "Melhor Valor",
     pricing_cta_start: "Começar",
     pricing_cta_demo: "Agendar Demo",
     pricing_delivered: "⚡ Entrega em 3–5 dias",
+
+    plan_basic_f1: "Site de restaurante de 1 página",
+    plan_basic_f2: "Seção do menu",
+    plan_basic_f3: "Galeria de fotos",
+    plan_basic_f4: "Integração do Google Maps",
+    plan_basic_f5: "Reservas pelo WhatsApp",
+    plan_basic_f6: "Link para o Instagram",
+    plan_basic_f7: "Configuração básica de SEO",
+    plan_basic_f8: "Menu QR",
+
+    plan_adv_f1: "Até 3 páginas locais",
+    plan_adv_f2: "Seção de Menu e Galeria",
+    plan_adv_f3: "Google Maps integrado",
+    plan_adv_f4: "Reservas pelo WhatsApp",
+    plan_adv_f5: "Integração com Instagram",
+    plan_adv_f6: "SEO aprimorado",
+    plan_adv_f7: "Animações fluidas",
+    plan_adv_f8: "Otimização móvel",
+
+    plan_prem_f1: "Design de restaurante sob medida",
+    plan_prem_f2: "Site de até 5 páginas",
+    plan_prem_f3: "Design e layout avançados",
+    plan_prem_f4: "Otimização de SEO + buscas por IA",
+    plan_prem_f5: "Sistema de reserva online",
+    plan_prem_f6: "Otimização de performance premium",
+    plan_prem_f7: "Design mobile-first inicial",
+    plan_prem_f8: "Otimização local nas buscas",
+    plan_prem_f9: "Atualizações e suporte prioritário",
+
+    feat_title: "Tudo O Que O Seu Restaurante Precisa Para Crescer Online",
+    feat_subtitle: "Sem dores de cabeça técnicas. Sem ferramentas complicadas. Apenas um site focado em trazer novos clientes pro seu restaurante.",
+    
+    feat_basic_title: "BÁSICO – Starter de Presença Online",
+    feat_basic_1_name: "Site de Restaurante Moderno",
+    feat_basic_1_desc: "Um site limpo e profissional focado na sua marca.",
+    feat_basic_2_name: "Design Otimizado Para Celulares",
+    feat_basic_2_desc: "Funciona perfeitamente em telas de desktop, tablet ou celular.",
+    feat_basic_3_name: "Visualização Rápida de Menu",
+    feat_basic_3_desc: "Exiba todo seu menu online em um formato convidativo e limpo.",
+    feat_basic_4_name: "Contacto Rápido e Endereço",
+    feat_basic_4_desc: "Facilite as ligações, rotas ou mensagens de seus clientes imediatas.",
+    feat_basic_5_name: "Site Rápido",
+    feat_basic_5_desc: "Ninguém ficará estressado aguardando site lento que afasta os visitantes.",
+    feat_basic_6_name: "SEO Local Focado em Maps",
+    feat_basic_6_desc: "Básico fundamental pra facilitar te achar nas cidades via google.",
+
+    feat_adv_title: "AVANÇADO – Máquina de Conversões",
+    feat_adv_includes: "Inclui tudo o que tem no plano Básico, e também:",
+    feat_adv_1_name: "Sistema de Reserva Mais Profissional",
+    feat_adv_1_desc: "Atendimento com formulários integrados direto de seu site online.",
+    feat_adv_2_name: "Experiência de Menu Riquíssima",
+    feat_adv_2_desc: "Aprimoramento que gera atratividade na fome do seu cliente final.",
+    feat_adv_3_name: "Portfólio em Fotografia Perfeitos",
+    feat_adv_3_desc: "Atmosfera vibrantes realistas num ambiente focado na venda pelo olhar.",
+    feat_adv_4_name: "Prova Social Inserida com Feedbacks",
+    feat_adv_4_desc: "Traga mais segurança ao exibir os elogios dos seus melhores compradores.",
+    feat_adv_5_name: "Google Maps em Outro Nível",
+    feat_adv_5_desc: "Melhor visibilidade no seu tráfego mais valioso para faturar rapidamente.",
+    feat_adv_6_name: "Local Search Ajudando Mais",
+    feat_adv_6_desc: "Atenda buscas locais com técnicas pra restaurantes como o seu nos arredores.",
+
+    feat_prem_title: "PREMIUM – Motor Definitivo do Crescimento",
+    feat_prem_includes: "Inclui tudo o que tem no plano Avançado, e também:",
+    feat_prem_1_name: "IA Pra Controle De Agendamento",
+    feat_prem_1_desc: "Uma tecnologia para simplificar o preenchimento diário das reservas mais disputadas.",
+    feat_prem_2_name: "Aborde Seus Turistas Gringos (Multi-Idioma)",
+    feat_prem_2_desc: "Atraia visitantes que não são dali sem que dependam de erro de uso.",
+    feat_prem_3_name: "GEO-SEO Fixo e Dinâmico",
+    feat_prem_3_desc: "Feito para os sites inteligentes dos buscadores globais, com alta relevância pra sempre.",
+    feat_prem_4_name: "User-Experience Inteligente Pra Compra",
+    feat_prem_4_desc: "Visuais pensados unicamente na emoção do cliente tomar um drink ao confirmar reserva.",
+    feat_prem_5_name: "Voe Rápido sem Interferência",
+    feat_prem_5_desc: "Garantia de que será super liso nas animações e botões pro mobile com tráfego denso.",
+    feat_prem_6_name: "Sua Marca Preparada Pro Ano Que Vem",
+    feat_prem_6_desc: "Acesso permanente ao código moderno das novas invenções de UX web pro food server.",
+
+    pricing_consultation: "Sessão de consultoria estratégica grátis inclusa no projeto de 30min.",
+
 
     // HowItWorks
     how_title: "Como Criamos seu Site de Restaurante",

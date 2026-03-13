@@ -18,7 +18,7 @@ const BANNER_COPY: Record<
   { message: string; yes: string; no: string; flag: string }
 > = {
   es: {
-    flag: "🇪🇸",
+    flag: "🇦🇷",
     message: "Detectamos que tu navegador está en español. ¿Ver esta página en Español?",
     yes: "Sí, cambiar a Español",
     no: "No, gracias",

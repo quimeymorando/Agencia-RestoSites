@@ -56,7 +56,7 @@ function RestaurantIcon({ size = 22, color = "#D36C4F" }: { size?: number; color
 /* ─── Configuración de idiomas con banderas ────────────────────────────── */
 const LANGS: { code: Language; flag: string; label: string; nativeLabel: string }[] = [
   { code: "en", flag: "🇺🇸", label: "English",   nativeLabel: "English"   },
-  { code: "es", flag: "🇪🇸", label: "Español",   nativeLabel: "Español"   },
+  { code: "es", flag: "🇦🇷", label: "Español",   nativeLabel: "Español"   },
   { code: "pt", flag: "🇧🇷", label: "Português", nativeLabel: "Português" },
 ];
 
