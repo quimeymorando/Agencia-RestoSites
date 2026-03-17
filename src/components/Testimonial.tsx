@@ -18,7 +18,7 @@ export function Testimonial() {
           </p>
           <div className="flex flex-col items-center gap-3">
             <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden border-2 border-white shadow-md">
-              <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=256&q=80" alt="Carlos Mendes - Restaurant Owner" className="w-full h-full object-cover" />
+              <img src="/images/carlos-mendes.png" alt="Carlos Mendes - Restaurant Owner" className="w-full h-full object-cover" />
             </div>
             <div>
               <h4 className="font-bold text-charcoal text-lg">Carlos Mendes</h4>
