@@ -35,7 +35,7 @@ export function Footer() {
               <a href="#" aria-label="Instagram" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
                 <Instagram size={22} />
               </a>
-              <a href="https://wa.me/1234567890" aria-label="WhatsApp" className="w-12 h-12 bg-[#25D366]/20 text-[#25D366] rounded-full flex items-center justify-center hover:bg-[#25D366]/30 transition-colors">
+              <a href="https://wa.me/542805070184" aria-label="WhatsApp" className="w-12 h-12 bg-[#25D366]/20 text-[#25D366] rounded-full flex items-center justify-center hover:bg-[#25D366]/30 transition-colors">
                 <MessageCircle size={22} />
               </a>
             </div>

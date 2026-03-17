@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
-  const waLink = "https://wa.me/1234567890?text=Hi%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20restaurant";
+  const waLink = "https://wa.me/542805070184?text=Hi%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20restaurant";
 
   return (
     <a

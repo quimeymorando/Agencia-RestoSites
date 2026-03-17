@@ -16,7 +16,7 @@ export function CallToAction() {
           <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-terracotta text-white font-semibold rounded-full hover:bg-terracotta/90 transition-all shadow-xl hover:shadow-terracotta/20 transform hover:-translate-y-1 text-lg">
             {t.cta_start}
           </a>
-          <a href="https://wa.me/1234567890" className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white font-medium rounded-full hover:bg-white/20 transition-all border border-white/20 flex items-center justify-center gap-2 text-lg">
+          <a href="https://wa.me/542805070184" className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white font-medium rounded-full hover:bg-white/20 transition-all border border-white/20 flex items-center justify-center gap-2 text-lg">
             <MessageCircle size={20} className="text-[#25D366]" />
             {t.cta_whatsapp}
           </a>

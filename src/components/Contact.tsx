@@ -23,7 +23,7 @@ export function Contact() {
               <div>
                 <h3 className="text-base font-bold text-charcoal mb-1">{t.contact_wa_title}</h3>
                 <p className="text-gray-500 text-sm mb-3">{t.contact_wa_text}</p>
-                <a href="https://wa.me/1234567890" className="inline-flex items-center gap-2 text-[#25D366] font-semibold text-sm hover:underline">
+                <a href="https://wa.me/542805070184" className="inline-flex items-center gap-2 text-[#25D366] font-semibold text-sm hover:underline">
                   <MessageCircle size={16} />
                   {t.contact_wa_link}
                 </a>
