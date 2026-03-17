@@ -305,7 +305,11 @@ export function Navbar() {
 
   const scrollToTop = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (window.location.pathname !== '/') {
+      window.location.href = '/';
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const navItems = [
@@ -342,7 +346,7 @@ export function Navbar() {
 
         {/* ── Logo ── */}
         <a
-          href="#hero"
+          href="/"
           onClick={scrollToTop}
           className="flex items-center gap-2.5"
           style={{ zIndex: 10, textDecoration: "none" }}
