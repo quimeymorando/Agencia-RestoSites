@@ -6,7 +6,7 @@ import type { Language } from "../i18n/translations";
 
 /* ─── Logo Icon: Tenedor + Cuchillo  ──────────────────────────────────────── */
 /* Diseño limpio estilo SaaS (Lucide / Heroicons / Feather)                    */
-function RestaurantIcon({ size = 22, color = "#D36C4F" }: { size?: number; color?: string }) {
+function RestaurantIcon({ size = 22, color = "#FF4C1A" }: { size?: number; color?: string }) {
   return (
     <svg
       width={size}
@@ -109,7 +109,7 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
           padding: "6px 12px",
           borderRadius: "999px",
           border: "1px solid rgba(255,255,255,0.15)",
-          background: open ? "rgba(211,108,79,0.18)" : "rgba(255,255,255,0.06)",
+          background: open ? "rgba(255,76,26,0.18)" : "rgba(255,255,255,0.06)",
           color: "rgba(255,255,255,0.90)",
           cursor: "pointer",
           fontSize: "13px",
@@ -118,8 +118,8 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
           whiteSpace: "nowrap",
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.background = "rgba(211,108,79,0.15)";
-          (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(211,108,79,0.4)";
+          (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,76,26,0.15)";
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,76,26,0.4)";
         }}
         onMouseLeave={(e) => {
           if (!open) {
@@ -187,7 +187,7 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
                     padding: "9px 12px",
                     borderRadius: "9px",
                     border: "none",
-                    background: isActive ? "rgba(211,108,79,0.18)" : "transparent",
+                    background: isActive ? "rgba(255,76,26,0.18)" : "transparent",
                     color: isActive ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.75)",
                     cursor: "pointer",
                     fontSize: "14px",
@@ -211,7 +211,7 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
                     <span>{l.nativeLabel}</span>
                   </span>
                   {isActive && (
-                    <Check size={14} style={{ color: "#D36C4F", flexShrink: 0 }} />
+                    <Check size={14} style={{ color: "#FF4C1A", flexShrink: 0 }} />
                   )}
                 </button>
               );
@@ -273,8 +273,8 @@ function MobileLangSelector({ onSelect }: { onSelect: () => void }) {
                 padding: "12px 14px",
                 borderRadius: "12px",
                 border: "1px solid",
-                borderColor: isActive ? "rgba(211,108,79,0.4)" : "transparent",
-                background: isActive ? "rgba(211,108,79,0.14)" : "rgba(255,255,255,0.03)",
+                borderColor: isActive ? "rgba(255,76,26,0.4)" : "transparent",
+                background: isActive ? "rgba(255,76,26,0.14)" : "rgba(255,255,255,0.03)",
                 color: isActive ? "#fff" : "rgba(255,255,255,0.65)",
                 cursor: "pointer",
                 fontSize: "15px",
@@ -288,7 +288,7 @@ function MobileLangSelector({ onSelect }: { onSelect: () => void }) {
                 <span style={{ fontSize: "22px" }}>{l.flag}</span>
                 <span>{l.nativeLabel}</span>
               </span>
-              {isActive && <Check size={15} style={{ color: "#D36C4F" }} />}
+              {isActive && <Check size={15} style={{ color: "#FF4C1A" }} />}
             </button>
           );
         })}
@@ -303,12 +303,17 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const navItems = [
-    { name: t.nav_home,    href: "#" },
-    { name: t.nav_demos,   href: "#demos" },
-    { name: t.nav_pricing, href: "#pricing" },
-    { name: t.nav_how,     href: "#how-it-works" },
-    { name: t.nav_contact, href: "#contact" },
+    { name: t.nav_home,    href: "#",            onClickFn: scrollToTop },
+    { name: t.nav_demos,   href: "#demos",        onClickFn: undefined },
+    { name: t.nav_pricing, href: "#pricing",      onClickFn: undefined },
+    { name: t.nav_how,     href: "#how-it-works", onClickFn: undefined },
+    { name: t.nav_contact, href: "#contact",      onClickFn: undefined },
   ];
 
   useEffect(() => {
@@ -338,6 +343,7 @@ export function Navbar() {
         {/* ── Logo ── */}
         <a
           href="#"
+          onClick={scrollToTop}
           className="flex items-center gap-2.5"
           style={{ zIndex: 10, textDecoration: "none" }}
           aria-label="RestoSites — Home"
@@ -350,8 +356,8 @@ export function Navbar() {
               justifyContent: "center",
               width: "32px",
               height: "32px",
-              background: "rgba(211,108,79,0.12)",
-              border: "1px solid rgba(211,108,79,0.25)",
+              background: "rgba(255,76,26,0.12)",
+              border: "1px solid rgba(255,76,26,0.25)",
               borderRadius: "8px",
               flexShrink: 0,
             }}
@@ -372,6 +378,7 @@ export function Navbar() {
               <li key={item.name}>
                 <a
                   href={item.href}
+                  onClick={item.onClickFn}
                   className="text-sm font-medium text-white/80 hover:text-white transition-colors"
                 >
                   {item.name}
@@ -428,7 +435,10 @@ export function Navbar() {
                   key={item.name}
                   href={item.href}
                   className="text-lg font-medium text-white/80 py-3 border-b border-white/10 hover:text-white hover:pl-2 transition-all"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    item.onClickFn?.(e);
+                    setMobileMenuOpen(false);
+                  }}
                 >
                   {item.name}
                 </a>

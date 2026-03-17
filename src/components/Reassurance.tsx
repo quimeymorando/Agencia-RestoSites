@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 
 /* ── Ícono SVG tenedor+cuchillo (misma geometría que Navbar) ── */
-function ForkKnifeIcon({ size = 72, color = "#D36C4F" }: { size?: number; color?: string }) {
+function ForkKnifeIcon({ size = 72, color = "#FF4C1A" }: { size?: number; color?: string }) {
   return (
     <svg
       width={size}
@@ -82,7 +82,7 @@ export function Reassurance() {
                   position: "absolute",
                   inset: "0px",
                   borderRadius: "50%",
-                  border: "1.5px solid rgba(211,108,79,0.3)",
+                  border: "1.5px solid rgba(255,76,26,0.3)",
                 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
@@ -96,8 +96,8 @@ export function Reassurance() {
                   width: "10px",
                   height: "10px",
                   borderRadius: "50%",
-                  background: "#D36C4F",
-                  boxShadow: "0 0 12px 4px rgba(211,108,79,0.9)",
+                  background: "#FF4C1A",
+                  boxShadow: "0 0 12px 4px rgba(255,76,26,0.9)",
                 }} />
               </motion.div>
 
@@ -107,7 +107,7 @@ export function Reassurance() {
                   position: "absolute",
                   inset: "28px",
                   borderRadius: "50%",
-                  border: "1px solid rgba(211,108,79,0.18)",
+                  border: "1px solid rgba(255,76,26,0.18)",
                 }}
                 animate={{ rotate: -360 }}
                 transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
@@ -121,8 +121,8 @@ export function Reassurance() {
                   width: "6px",
                   height: "6px",
                   borderRadius: "50%",
-                  background: "rgba(211,108,79,0.7)",
-                  boxShadow: "0 0 8px 2px rgba(211,108,79,0.5)",
+                  background: "rgba(255,76,26,0.7)",
+                  boxShadow: "0 0 8px 2px rgba(255,76,26,0.5)",
                 }} />
               </motion.div>
 
@@ -151,17 +151,17 @@ export function Reassurance() {
                     style={{
                       width: "96px",
                       height: "96px",
-                      background: "linear-gradient(135deg, rgba(211,108,79,0.18) 0%, rgba(211,108,79,0.06) 100%)",
-                      border: "1.5px solid rgba(211,108,79,0.4)",
+                      background: "linear-gradient(135deg, rgba(255,76,26,0.18) 0%, rgba(255,76,26,0.06) 100%)",
+                      border: "1.5px solid rgba(255,76,26,0.4)",
                       borderRadius: "24px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      boxShadow: "0 8px 40px rgba(211,108,79,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+                      boxShadow: "0 8px 40px rgba(255,76,26,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
                       backdropFilter: "blur(12px)",
                     }}
                   >
-                    <ForkKnifeIcon size={52} color="#D36C4F" />
+                    <ForkKnifeIcon size={52} color="#FF4C1A" />
                   </motion.div>
 
                   {/* Wordmark bajo el ícono */}
@@ -174,7 +174,7 @@ export function Reassurance() {
                       letterSpacing: "-0.02em",
                       lineHeight: 1,
                     }}>
-                      Resto<span style={{ color: "#D36C4F" }}>Sites</span>
+                      Resto<span style={{ color: "#FF4C1A" }}>Sites</span>
                     </p>
                     <p style={{
                       fontSize: "11px",
