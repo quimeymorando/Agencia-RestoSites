@@ -309,7 +309,7 @@ export function Navbar() {
   };
 
   const navItems = [
-    { name: t.nav_home,    href: "#",            onClickFn: scrollToTop },
+    { name: t.nav_home,    href: "#hero",        onClickFn: scrollToTop },
     { name: t.nav_demos,   href: "#demos",        onClickFn: undefined },
     { name: t.nav_pricing, href: "#pricing",      onClickFn: undefined },
     { name: t.nav_how,     href: "#how-it-works", onClickFn: undefined },
@@ -342,7 +342,7 @@ export function Navbar() {
 
         {/* ── Logo ── */}
         <a
-          href="#"
+          href="#hero"
           onClick={scrollToTop}
           className="flex items-center gap-2.5"
           style={{ zIndex: 10, textDecoration: "none" }}

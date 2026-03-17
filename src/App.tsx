@@ -16,6 +16,10 @@ import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { LanguageBanner } from './components/LanguageBanner';
 import { LanguageProvider } from './context/LanguageContext';
+import { ScrollToTop } from './components/ScrollToTop';
+import { DemoElegante } from './pages/DemoElegante';
+import { DemoCasual } from './pages/DemoCasual';
+import { DemoModerno } from './pages/DemoModerno';
 
 function SitePage() {
   return (
@@ -44,11 +48,15 @@ function SitePage() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <LanguageProvider>
         <Routes>
           <Route path="/" element={<SitePage />} />
           <Route path="/es/*" element={<SitePage />} />
           <Route path="/pt/*" element={<SitePage />} />
+          <Route path="/demo-elegante" element={<DemoElegante />} />
+          <Route path="/demo-casual" element={<DemoCasual />} />
+          <Route path="/demo-moderno" element={<DemoModerno />} />
           {/* Fallback */}
           <Route path="*" element={<SitePage />} />
         </Routes>

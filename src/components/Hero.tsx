@@ -5,6 +5,7 @@ export function Hero() {
   const { t } = useLanguage();
   return (
     <section
+      id="hero"
       className="relative w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden"
       aria-label="Restaurant website design agency hero"
     >
