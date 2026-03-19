@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
 const cardVariants = {
@@ -15,12 +15,20 @@ const demoImages = [
 
 export function Demos() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const demos = [
     { title: t.demo1_title, usp: t.demo1_usp, image: demoImages[0], link: "/demo-elegante" },
     { title: t.demo2_title, usp: t.demo2_usp, image: demoImages[1], link: "/demo-casual" },
     { title: t.demo3_title, usp: t.demo3_usp, image: demoImages[2], link: "/demo-moderno" },
   ];
+
+  const handleViewDemo = (link: string) => {
+    // Primero scrolleamos a 0 en la página actual,
+    // luego navegamos — así nunca se hereda la posición del scroll anterior.
+    window.scrollTo(0, 0);
+    navigate(link);
+  };
 
   return (
     <section className="py-24 bg-white" id="demos">
@@ -50,15 +58,12 @@ export function Demos() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold font-heading text-charcoal mb-2">{demo.title}</h3>
                 <p className="text-charcoal-light text-sm mb-6">{demo.usp}</p>
-                {demo.link && demo.link.startsWith('/') ? (
-                  <Link to={demo.link} className="inline-block px-6 py-3 w-full text-center bg-transparent border-2 border-charcoal text-charcoal font-semibold rounded-full hover:bg-charcoal hover:text-white transition-all">
-                    {t.demo_cta}
-                  </Link>
-                ) : (
-                  <a href={demo.link || "#contact"} className="inline-block px-6 py-3 w-full text-center bg-transparent border-2 border-charcoal text-charcoal font-semibold rounded-full hover:bg-charcoal hover:text-white transition-all">
-                    {t.demo_cta}
-                  </a>
-                )}
+                <button
+                  onClick={() => handleViewDemo(demo.link)}
+                  className="inline-block px-6 py-3 w-full text-center bg-transparent border-2 border-charcoal text-charcoal font-semibold rounded-full hover:bg-charcoal hover:text-white transition-all"
+                >
+                  {t.demo_cta}
+                </button>
               </div>
             </motion.div>
           ))}

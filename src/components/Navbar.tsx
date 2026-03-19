@@ -62,7 +62,7 @@ const LANGS: { code: Language; flag: string; label: string; nativeLabel: string 
 
 
 /* ─── Dropdown de banderas (desktop) ─────────────────────────────────────── */
-function LangDropdown({ onClose }: { onClose?: () => void }) {
+export function LangDropdown({ onClose, theme = "dark" }: { onClose?: () => void, theme?: "dark" | "light" }) {
   const { lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -108,9 +108,13 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
           gap: "6px",
           padding: "6px 12px",
           borderRadius: "999px",
-          border: "1px solid rgba(255,255,255,0.15)",
-          background: open ? "rgba(255,76,26,0.18)" : "rgba(255,255,255,0.06)",
-          color: "rgba(255,255,255,0.90)",
+          border: theme === "dark" ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(0,0,0,0.1)",
+          background: open 
+            ? "rgba(255,76,26,0.18)" 
+            : theme === "dark" 
+              ? "rgba(255,255,255,0.06)" 
+              : "rgba(0,0,0,0.05)",
+          color: theme === "dark" ? "rgba(255,255,255,0.90)" : "rgba(0,0,0,0.7)",
           cursor: "pointer",
           fontSize: "13px",
           fontWeight: 600,
@@ -123,12 +127,12 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
         }}
         onMouseLeave={(e) => {
           if (!open) {
-            (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
+            (e.currentTarget as HTMLButtonElement).style.background = theme === "dark" ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.05)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = theme === "dark" ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)";
           }
         }}
       >
-        <Globe size={14} style={{ opacity: 0.8 }} />
+        <Globe size={14} style={{ opacity: theme === "dark" ? 0.8 : 0.6 }} />
         <span style={{ fontSize: "15px" }}>{active.flag}</span>
         <span>{active.nativeLabel}</span>
         <svg
@@ -161,10 +165,10 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
               top: "calc(100% + 8px)",
               right: 0,
               minWidth: "160px",
-              background: "rgba(20,20,20,0.97)",
+              background: theme === "dark" ? "rgba(20,20,20,0.97)" : "rgba(255,255,255,0.97)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              border: theme === "dark" ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(0,0,0,0.1)",
               borderRadius: "14px",
               padding: "6px",
               boxShadow: "0 16px 48px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(255,255,255,0.05)",
@@ -188,7 +192,7 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
                     borderRadius: "9px",
                     border: "none",
                     background: isActive ? "rgba(255,76,26,0.18)" : "transparent",
-                    color: isActive ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.75)",
+                    color: isActive ? (theme === "dark" ? "rgba(255,255,255,1)" : "rgba(0,0,0,0.9)") : (theme === "dark" ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.6)"),
                     cursor: "pointer",
                     fontSize: "14px",
                     fontWeight: isActive ? 600 : 400,
@@ -198,8 +202,7 @@ function LangDropdown({ onClose }: { onClose?: () => void }) {
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive)
-                      (e.currentTarget as HTMLButtonElement).style.background =
-                        "rgba(255,255,255,0.07)";
+                      (e.currentTarget as HTMLButtonElement).style.background = theme === "dark" ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.04)";
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive)
@@ -305,11 +308,7 @@ export function Navbar() {
 
   const scrollToTop = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (window.location.pathname !== '/') {
-      window.location.href = '/';
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const navItems = [

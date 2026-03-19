@@ -1,9 +1,16 @@
-import { } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Check, Star, MapPin, ChefHat, Sparkles, Smartphone, Search, Utensils, Clock, Globe, ArrowUpRight } from 'lucide-react';
+
+import { ArrowRight, Check, Star, MapPin, ChefHat, Sparkles, Smartphone, Search, Utensils, Clock, Globe, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import { DemoNavbar } from '../components/demos/DemoNavbar';
 
 export function DemoElegante() {
+  const { t } = useLanguage();
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -27,33 +34,17 @@ export function DemoElegante() {
   return (
     <div className="min-h-screen bg-white text-charcoal font-sans selection:bg-terracotta selection:text-white">
       {/* SECTION 0 — NAVIGATION */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/70 backdrop-blur-xl border-b border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group text-beige">
-            <span className="font-heading font-bold text-2xl tracking-tighter drop-shadow-sm">
-              Resto<span className="text-terracotta">Sites</span>.
-            </span>
-          </Link>
-          <Link 
-            to="/" 
-            className="flex items-center gap-2 text-sm font-medium text-beige/80 hover:text-white transition-colors group bg-white/10 px-5 py-2.5 rounded-full border border-white/10 hover:bg-white/20 backdrop-blur-md"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Home
-          </Link>
-        </div>
-      </nav>
+      <DemoNavbar theme="elegante" />
 
       <main className="pt-20">
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[90vh] flex items-center justify-center bg-charcoal text-beige overflow-hidden">
-          {/* Subtle background gradient/noise could go here */}
           <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80')] bg-cover bg-center" />
           <div className="absolute inset-0 bg-charcoal/90" />
           
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <motion.div {...fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-beige/20 text-xs tracking-widest uppercase mb-8 text-beige/80">
-              <Star className="w-3 h-3 text-terracotta" /> Premium Collection
+              <Star className="w-3 h-3 text-terracotta" /> {t.elegante_badge}
             </motion.div>
             
             <motion.h1 
@@ -62,7 +53,7 @@ export function DemoElegante() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-heading text-6xl md:text-8xl font-light tracking-tight mb-6 leading-[1.1]"
             >
-              Elegant Restaurant <br/><span className="italic text-terracotta">Websites</span>
+              {t.elegante_hero_title.split(' ').slice(0, -1).join(' ')} <br/><span className="italic text-terracotta">{t.elegante_hero_title.split(' ').slice(-1)[0]}</span>
             </motion.h1>
             
             <motion.p 
@@ -71,7 +62,7 @@ export function DemoElegante() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl text-beige/70 font-light max-w-2xl mx-auto mb-12"
             >
-              Designed for fine dining, premium experiences, and high-end restaurant brands that demand perfection.
+              {t.elegante_hero_subtitle}
             </motion.p>
             
             <motion.div 
@@ -80,12 +71,12 @@ export function DemoElegante() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <a href="#pricing" className="px-8 py-4 bg-terracotta text-white rounded-full font-medium tracking-wide hover:bg-[#e63f0d] transition-all hover:scale-105 inline-flex items-center gap-2 w-full sm:w-auto justify-center">
-                Start your website <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#style" className="px-8 py-4 bg-transparent border border-beige/30 text-beige rounded-full font-medium tracking-wide hover:bg-beige/10 transition-all w-full sm:w-auto justify-center text-center">
-                Explore Style
-              </a>
+              <button onClick={() => scrollToSection('pricing')} className="px-8 py-4 bg-terracotta text-white rounded-full font-medium tracking-wide hover:bg-[#e63f0d] transition-all hover:scale-105 inline-flex items-center gap-2 w-full sm:w-auto justify-center">
+                {t.demo_start_website} <ArrowRight className="w-4 h-4" />
+              </button>
+              <button onClick={() => scrollToSection('style')} className="px-8 py-4 bg-transparent border border-beige/30 text-beige rounded-full font-medium tracking-wide hover:bg-beige/10 transition-all w-full sm:w-auto justify-center text-center">
+                {t.elegante_explore_btn}
+              </button>
             </motion.div>
           </div>
         </section>
@@ -95,10 +86,10 @@ export function DemoElegante() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeIn} className="max-w-3xl mx-auto text-center mb-24">
               <h2 className="font-heading text-4xl md:text-5xl font-light tracking-tight mb-6">
-                The Art of <span className="italic">First Impressions</span>
+                {t.elegante_style_title.split(' ').slice(0, 2).join(' ')} <span className="italic">{t.elegante_style_title.split(' ').slice(2).join(' ')}</span>
               </h2>
               <p className="text-xl text-charcoal/60 font-light leading-relaxed">
-                This style is ideal for luxury restaurants, wine bars, and gourmet dining experiences that want to elevate their brand and attract high-paying customers.
+                {t.elegante_style_subtitle}
               </p>
             </motion.div>
 
@@ -109,26 +100,10 @@ export function DemoElegante() {
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
               {[
-                {
-                  icon: <Sparkles className="w-6 h-6 stroke-1" />,
-                  title: "Sophisticated & Minimal",
-                  desc: "Stripped of clutter. Every element serves a purpose, allowing your culinary art to shine."
-                },
-                {
-                  icon: <Star className="w-6 h-6 stroke-1" />,
-                  title: "Visual Storytelling",
-                  desc: "Large, immersive imagery that transports the visitor directly to your dining room."
-                },
-                {
-                  icon: <Utensils className="w-6 h-6 stroke-1" />,
-                  title: "Focus on Atmosphere",
-                  desc: "We design specifically to convey the exclusivity and ambiance of your physical location."
-                },
-                {
-                  icon: <ArrowUpRight className="w-6 h-6 stroke-1" />,
-                  title: "Pricing Power",
-                  desc: "A high-end digital presence directly increases the perceived value of your menu."
-                }
+                { icon: <Sparkles className="w-6 h-6 stroke-1" />, title: t.elegante_feat1_title, desc: t.elegante_feat1_desc },
+                { icon: <Star className="w-6 h-6 stroke-1" />, title: t.elegante_feat2_title, desc: t.elegante_feat2_desc },
+                { icon: <Utensils className="w-6 h-6 stroke-1" />, title: t.elegante_feat3_title, desc: t.elegante_feat3_desc },
+                { icon: <ArrowUpRight className="w-6 h-6 stroke-1" />, title: t.elegante_feat4_title, desc: t.elegante_feat4_desc }
               ].map((feature, idx) => (
                 <motion.div key={idx} variants={item} className="p-8 border border-charcoal/5 rounded-2xl hover:border-terracotta/30 hover:bg-beige/30 transition-colors group">
                   <div className="w-12 h-12 rounded-full bg-charcoal text-beige flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -146,9 +121,11 @@ export function DemoElegante() {
         <section id="pricing" className="py-32 bg-beige/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeIn} className="text-center mb-20">
-              <h2 className="font-heading text-4xl md:text-5xl font-light tracking-tight mb-6">Investment in <span className="italic">Excellence</span></h2>
+              <h2 className="font-heading text-4xl md:text-5xl font-light tracking-tight mb-6">
+                {t.elegante_pricing_title.split(' ').slice(0, -1).join(' ')} <span className="italic">{t.elegante_pricing_title.split(' ').slice(-1)[0]}</span>
+              </h2>
               <p className="text-xl text-charcoal/60 font-light max-w-2xl mx-auto">
-                Choose the perfect foundation for your culinary brand.
+                {t.elegante_pricing_subtitle}
               </p>
             </motion.div>
 
@@ -156,13 +133,13 @@ export function DemoElegante() {
               {/* BASIC */}
               <motion.div {...fadeIn} className="bg-white rounded-3xl p-8 lg:p-10 border border-charcoal/10 flex flex-col justify-between hover:shadow-xl transition-shadow">
                 <div>
-                  <h3 className="font-heading text-2xl font-medium mb-2">Basic</h3>
-                  <p className="text-charcoal/60 text-sm mb-6">Online Presence Starter</p>
+                  <h3 className="font-heading text-2xl font-medium mb-2">{t.plan_basic}</h3>
+                  <p className="text-charcoal/60 text-sm mb-6">{t.elegante_basic_plan_desc}</p>
                   <div className="mb-8">
                     <span className="text-5xl font-light tracking-tight">$250</span>
                   </div>
                   <ul className="space-y-4 mb-8">
-                    {["1 page website", "Delivery in 3–5 days", "Mobile optimized design", "Basic Local SEO Setup"].map((feature, i) => (
+                    {[t.elegante_basic_f1, t.elegante_basic_f2, t.elegante_basic_f3, t.elegante_basic_f4].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-charcoal/80">
                         <Check className="w-5 h-5 text-olive shrink-0" />
                         <span>{feature}</span>
@@ -172,10 +149,10 @@ export function DemoElegante() {
                 </div>
                 <div className="space-y-4 mt-auto">
                   <a href="#basic-elegant" className="block w-full py-3 px-6 rounded-full border border-charcoal text-center font-medium hover:bg-charcoal hover:text-white transition-colors">
-                    View Details
+                    {t.demo_view_details}
                   </a>
                   <button className="block w-full py-3 px-6 rounded-full bg-charcoal text-white text-center font-medium hover:bg-charcoal-light transition-colors">
-                    Start Basic
+                    {t.demo_start_basic}
                   </button>
                 </div>
               </motion.div>
@@ -183,16 +160,16 @@ export function DemoElegante() {
               {/* ADVANCED */}
               <motion.div {...fadeIn} className="bg-charcoal text-beige rounded-3xl p-8 lg:p-10 border border-charcoal relative flex flex-col justify-between transform lg:-translate-y-4 shadow-2xl">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-terracotta text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
-                  Most Popular
+                  {t.demo_most_popular}
                 </div>
                 <div>
-                  <h3 className="font-heading text-2xl font-medium mb-2">Advanced</h3>
-                  <p className="text-beige/60 text-sm mb-6">Conversion Focused Website</p>
+                  <h3 className="font-heading text-2xl font-medium mb-2">{t.plan_advanced}</h3>
+                  <p className="text-beige/60 text-sm mb-6">{t.elegante_adv_plan_desc}</p>
                   <div className="mb-8">
                     <span className="text-5xl font-light tracking-tight">$450</span>
                   </div>
                   <ul className="space-y-4 mb-8">
-                    {["Up to 3 pages", "Better SEO", "Animations", "Instagram integration", "Online Reservation System"].map((feature, i) => (
+                    {[t.elegante_adv_f1, t.elegante_adv_f2, t.elegante_adv_f3, t.elegante_adv_f4, t.elegante_adv_f5].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-beige/90">
                         <Check className="w-5 h-5 text-terracotta shrink-0" />
                         <span>{feature}</span>
@@ -202,10 +179,10 @@ export function DemoElegante() {
                 </div>
                 <div className="space-y-4 mt-auto">
                   <a href="#advanced-elegant" className="block w-full py-3 px-6 rounded-full border border-beige/30 text-center font-medium hover:bg-beige/10 transition-colors">
-                    View Details
+                    {t.demo_view_details}
                   </a>
                   <button className="block w-full py-3 px-6 rounded-full bg-terracotta text-white text-center font-medium hover:bg-[#e63f0d] transition-colors">
-                    Start Advanced
+                    {t.demo_start_advanced}
                   </button>
                 </div>
               </motion.div>
@@ -213,16 +190,16 @@ export function DemoElegante() {
               {/* PREMIUM */}
               <motion.div {...fadeIn} className="bg-white rounded-3xl p-8 lg:p-10 border border-charcoal/10 flex flex-col justify-between hover:shadow-xl transition-shadow relative overflow-hidden">
                 <div className="absolute -right-12 top-8 rotate-45 bg-olive text-white px-12 py-1 text-xs font-bold uppercase tracking-widest">
-                  Best Value
+                  {t.demo_best_value}
                 </div>
                 <div>
-                  <h3 className="font-heading text-2xl font-medium mb-2">Premium</h3>
-                  <p className="text-charcoal/60 text-sm mb-6">Growth Engine</p>
+                  <h3 className="font-heading text-2xl font-medium mb-2">{t.plan_premium}</h3>
+                  <p className="text-charcoal/60 text-sm mb-6">{t.elegante_prem_plan_desc}</p>
                   <div className="mb-8">
                     <span className="text-5xl font-light tracking-tight">$850</span>
                   </div>
                   <ul className="space-y-4 mb-8">
-                    {["Custom restaurant design", "Up to 5 pages", "SEO + AI Search Optimization", "Online reservation system", "Local search optimization", "Performance optimization"].map((feature, i) => (
+                    {[t.elegante_prem_f1, t.elegante_prem_f2, t.elegante_prem_f3, t.elegante_prem_f4, t.elegante_prem_f5, t.elegante_prem_f6].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-charcoal/80">
                         <Check className="w-5 h-5 text-olive shrink-0" />
                         <span>{feature}</span>
@@ -232,10 +209,10 @@ export function DemoElegante() {
                 </div>
                 <div className="space-y-4 mt-auto">
                   <a href="#premium-elegant" className="block w-full py-3 px-6 rounded-full border border-charcoal text-center font-medium hover:bg-charcoal hover:text-white transition-colors">
-                    View Details
+                    {t.demo_view_details}
                   </a>
                   <button className="block w-full py-3 px-6 rounded-full bg-charcoal text-white text-center font-medium hover:bg-charcoal-light transition-colors">
-                    Start Premium
+                    {t.demo_start_premium}
                   </button>
                 </div>
               </motion.div>
@@ -254,45 +231,45 @@ export function DemoElegante() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-olive/10 text-olive mb-8">
                     <span className="font-heading text-2xl font-bold">1</span>
                   </div>
-                  <h3 className="font-heading text-4xl font-light mb-4">BASIC <span className="text-charcoal/40 block text-2xl mt-2">Online Presence Starter</span></h3>
+                  <h3 className="font-heading text-4xl font-light mb-4">{t.elegante_basic_sect_title} <span className="text-charcoal/40 block text-2xl mt-2">{t.elegante_basic_sect_subtitle}</span></h3>
                   <p className="text-lg text-charcoal/60 mb-8 leading-relaxed">
-                    The perfect stepping stone for restaurants that need a beautiful, functional website without complex features. Get your menu and location online swiftly.
+                    {t.elegante_basic_sect_desc}
                   </p>
                   
                   <ul className="space-y-6">
                     <li className="flex gap-4">
                       <div className="mt-1"><Smartphone className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Mobile Optimized Design</h4>
-                        <p className="text-sm text-charcoal/60">Flawless experience on any device, ensuring your customers can see your menu clearly on their phones.</p>
+                        <h4 className="font-medium mb-1">{t.feat_basic_2_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_basic_2_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1"><Utensils className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Menu Showcase</h4>
-                        <p className="text-sm text-charcoal/60">A beautifully formatted, easy-to-read menu section that highlights your best dishes.</p>
+                        <h4 className="font-medium mb-1">{t.feat_basic_3_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_basic_3_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1"><MapPin className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Contact & Location</h4>
-                        <p className="text-sm text-charcoal/60">Clear directions, opening hours, and one-tap calling features for mobile users.</p>
+                        <h4 className="font-medium mb-1">{t.feat_basic_4_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_basic_4_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1"><Clock className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Fast Loading Website</h4>
-                        <p className="text-sm text-charcoal/60">Performance tuned so your customers don't wait to see your offerings.</p>
+                        <h4 className="font-medium mb-1">{t.feat_basic_5_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_basic_5_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4 items-start">
                       <div className="mt-1"><Search className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Basic Local SEO Setup</h4>
-                        <p className="text-sm text-charcoal/60 mb-3">Foundational setup to help you appear when people search locally. Examples of targeting:</p>
+                        <h4 className="font-medium mb-1">{t.feat_basic_6_name}</h4>
+                        <p className="text-sm text-charcoal/60 mb-3">{t.feat_basic_6_desc}</p>
                         <div className="flex flex-wrap gap-2">
                           <span className="text-xs bg-beige px-3 py-1 rounded-full">"restaurant near me"</span>
                           <span className="text-xs bg-beige px-3 py-1 rounded-full">"pizza in madrid"</span>
@@ -324,11 +301,11 @@ export function DemoElegante() {
                   <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
                   <div className="relative z-10 w-full max-w-sm bg-charcoal-light rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-6 transform -rotate-2">
                      <div className="flex items-center justify-between mb-6 border-b border-beige/10 pb-4">
-                        <span className="font-heading text-lg">Reserve a Table</span>
+                        <span className="font-heading text-lg">{t.demo_reserve_table}</span>
                         <div className="w-8 h-8 rounded-full bg-terracotta/20 flex items-center justify-center"><Check className="w-4 h-4 text-terracotta" /></div>
                      </div>
                      <div className="space-y-3">
-                        <div className="w-full h-10 bg-charcoal rounded flex items-center px-4 text-sm text-beige/40 border border-beige/10">Date & Time</div>
+                        <div className="w-full h-10 bg-charcoal rounded flex items-center px-4 text-sm text-beige/40 border border-beige/10">Date &amp; Time</div>
                         <div className="w-full h-10 bg-charcoal rounded flex items-center px-4 text-sm text-beige/40 border border-beige/10">Guests</div>
                         <div className="w-full h-12 bg-terracotta rounded mt-4"></div>
                      </div>
@@ -338,42 +315,42 @@ export function DemoElegante() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-terracotta/10 text-terracotta mb-8">
                     <span className="font-heading text-2xl font-bold">2</span>
                   </div>
-                  <h3 className="font-heading text-4xl font-light mb-4">ADVANCED <span className="text-charcoal/40 block text-2xl mt-2">Conversion Focused Website</span></h3>
+                  <h3 className="font-heading text-4xl font-light mb-4">{t.elegante_adv_sect_title} <span className="text-charcoal/40 block text-2xl mt-2">{t.elegante_adv_sect_subtitle}</span></h3>
                   <p className="text-lg text-charcoal/60 mb-8 leading-relaxed">
-                    Designed not just to be seen, but to convert visitors into booked tables. Proven to improve reservation conversion rates by <strong className="text-terracotta font-medium">30–40%</strong> compared to basic sites.
+                    {t.elegante_adv_sect_desc}
                   </p>
                   
                   <div className="bg-beige/50 p-6 rounded-2xl mb-8 border border-charcoal/5">
-                    <p className="text-sm font-medium text-charcoal mb-2">Includes everything in Basic, PLUS:</p>
+                    <p className="text-sm font-medium text-charcoal mb-2">{t.elegante_adv_incl}</p>
                   </div>
 
                   <ul className="space-y-6">
                     <li className="flex gap-4">
                       <div className="mt-1"><Globe className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Online Reservation System</h4>
-                        <p className="text-sm text-charcoal/60">Eliminate friction. Allow customers to book 24/7 directly from your site, reducing phone calls and missed opportunities.</p>
+                        <h4 className="font-medium mb-1">{t.feat_adv_1_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_adv_1_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1"><ChefHat className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Interactive Menu Experience</h4>
-                        <p className="text-sm text-charcoal/60">Menus that categorise beautifully, complete with imagery, dietaries, and special highlights.</p>
+                        <h4 className="font-medium mb-1">{t.feat_adv_2_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_adv_2_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1"><Star className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Customer Reviews Integration</h4>
-                        <p className="text-sm text-charcoal/60">Build trust instantly by displaying your best Google or TripAdvisor reviews dynamically.</p>
+                        <h4 className="font-medium mb-1">{t.feat_adv_4_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_adv_4_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1"><Search className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Local SEO Optimization</h4>
-                        <p className="text-sm text-charcoal/60">Advanced meta-tagging and schema markup so Google understands exactly what you serve and where.</p>
+                        <h4 className="font-medium mb-1">{t.feat_adv_6_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_adv_6_desc}</p>
                       </div>
                     </li>
                   </ul>
@@ -388,46 +365,46 @@ export function DemoElegante() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-olive mb-8 shadow-xl shadow-olive/20 text-white">
                     <span className="font-heading text-2xl font-bold">3</span>
                   </div>
-                  <h3 className="font-heading text-4xl font-light mb-4">PREMIUM <span className="text-charcoal/40 block text-2xl mt-2">Growth Engine</span></h3>
+                  <h3 className="font-heading text-4xl font-light mb-4">{t.elegante_prem_sect_title} <span className="text-charcoal/40 block text-2xl mt-2">{t.elegante_prem_sect_subtitle}</span></h3>
                   <p className="text-lg text-charcoal/60 mb-8 leading-relaxed">
-                    The ultimate digital presence for elite restaurants. We leverage the latest web technologies and AI optimization to ensure you dominate your local market.
+                    {t.elegante_prem_sect_desc}
                   </p>
                   
                   <div className="bg-beige/50 p-6 rounded-2xl mb-8 border border-charcoal/5">
-                    <p className="text-sm font-medium text-charcoal mb-2">Includes everything in Advanced, PLUS:</p>
+                    <p className="text-sm font-medium text-charcoal mb-2">{t.elegante_prem_incl}</p>
                   </div>
 
                   <ul className="space-y-6">
                     <li className="flex gap-4">
                       <div className="mt-1"><Sparkles className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">AI Table Booking Assistant</h4>
-                        <p className="text-sm text-charcoal/60">An intelligent chatbot that can answer menu questions, operating hours, and take bookings automatically.</p>
+                        <h4 className="font-medium mb-1">{t.feat_prem_1_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_prem_1_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4 items-start">
                       <div className="mt-1"><Globe className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">GEO + SEO Optimization</h4>
+                        <h4 className="font-medium mb-1">{t.feat_prem_3_name}</h4>
                         <p className="text-sm text-charcoal/60 mb-2">
-                          <strong>Geographical Targeting:</strong> We structure your site to dominate searches in specific neighborhoods, postcodes, and surrounding areas, capturing tourist and local traffic effectively.
+                          {t.feat_prem_3_desc}
                         </p>
                       </div>
                     </li>
                     <li className="flex gap-4 items-start">
                       <div className="mt-1"><Search className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">AI Search Engine Readiness</h4>
+                        <h4 className="font-medium mb-1">{t.feat_prem_2_name}</h4>
                         <p className="text-sm text-charcoal/60">
-                          People now ask ChatGPT and Perplexity for "the best romantic dinner spot nearby". We optimize your website content (Semantic SEO) so AI engines recommend <span className="italic">your</span> restaurant as the definitive answer.
+                          {t.feat_prem_2_desc}
                         </p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1"><ArrowUpRight className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-medium mb-1">Multi-language & Smart Conversion</h4>
-                        <p className="text-sm text-charcoal/60">Automatically serve the site in the user's native language. Heatmap-tested layouts that guide eyes directly to high-margin items and bookings.</p>
+                        <h4 className="font-medium mb-1">{t.feat_prem_4_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_prem_4_desc}</p>
                       </div>
                     </li>
                   </ul>
@@ -441,9 +418,9 @@ export function DemoElegante() {
                         <span className="bg-olive text-white text-xs px-3 py-1 rounded-full border border-white/20">AI Optimized</span>
                         <span className="bg-terracotta text-white text-xs px-3 py-1 rounded-full border border-white/20">GEO Targeted</span>
                      </div>
-                     <h4 className="font-heading text-3xl text-beige mb-4 shadow-sm">Dominate The Digital Dining Scene</h4>
+                     <h4 className="font-heading text-3xl text-beige mb-4 shadow-sm">{t.feat_prem_3_name}</h4>
                      <p className="text-beige/80 text-sm max-w-sm">
-                       Ensure your establishment is the very first recommendation when high-intent diners search for premium experiences in your city.
+                       {t.feat_prem_3_desc}
                      </p>
                   </div>
                 </div>
@@ -461,13 +438,13 @@ export function DemoElegante() {
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <motion.div {...fadeIn}>
               <h2 className="font-heading text-5xl md:text-7xl font-light tracking-tight mb-8">
-                Ready to elevate <br/><span className="italic text-terracotta">your restaurant?</span>
+                {t.elegante_cta_title.split('?')[0]}<br/><span className="italic text-terracotta">{t.elegante_cta_title.includes('?') ? t.elegante_cta_title.split('?')[1] || '' : ''}</span>
               </h2>
               <p className="text-xl text-beige/70 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
-                Transform your digital presence into a powerful growth engine. Increase your visibility, attract more guests, and elevate your brand's prestigious reputation today.
+                {t.elegante_cta_subtitle}
               </p>
               <button className="px-10 py-5 bg-terracotta text-white rounded-full font-medium tracking-wide hover:bg-[#e63f0d] transition-all hover:scale-105 inline-flex items-center gap-2 text-lg shadow-[0_0_40px_rgba(255,76,26,0.3)]">
-                Start your website <ArrowRight className="w-5 h-5" />
+                {t.demo_start_website} <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>
           </div>
@@ -476,7 +453,7 @@ export function DemoElegante() {
       
       {/* Simple Footer just for the standalone page */}
       <footer className="bg-charcoal border-t border-beige/10 py-8 text-center text-beige/40 text-sm">
-         <p>© {new Date().getFullYear()} RestoSites. All rights reserved.</p>
+         <p>© {new Date().getFullYear()} {t.elegante_footer}</p>
       </footer>
     </div>
   );

@@ -199,13 +199,22 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLangState(newLang);
     localStorage.setItem("restosites_lang", newLang);
     updateHeadSEO(newLang);
-    navigate(LANG_PATHS[newLang], { replace: true });
+    
+    // Si la URL actual es de una demo (no empieza con /demo-), no redirigimos
+    if (!location.pathname.startsWith("/demo-")) {
+      navigate(LANG_PATHS[newLang], { replace: true });
+    }
   };
 
-  // On initial mount + path changes, sync lang
+  // On initial mount + path changes, sync lang from URL only when URL
+  // has an explicit language prefix (/es or /pt). For non-prefixed routes
+  // like /demo-elegante, keep the current language (from localStorage/state).
   useEffect(() => {
     const fromPath = getLangFromPath(location.pathname);
-    if (fromPath !== lang) {
+    const hasLangPrefix =
+      location.pathname.startsWith("/es") || location.pathname.startsWith("/pt");
+
+    if (hasLangPrefix && fromPath !== lang) {
       setLangState(fromPath);
     }
     updateHeadSEO(lang);

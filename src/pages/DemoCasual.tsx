@@ -1,9 +1,16 @@
-import { } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Check, Star, MapPin, Sparkles, Smartphone, Search, Utensils, Globe } from 'lucide-react';
+
+import { ArrowRight, Check, Star, MapPin, Sparkles, Smartphone, Search, Utensils, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import { DemoNavbar } from '../components/demos/DemoNavbar';
 
 export function DemoCasual() {
+  const { t } = useLanguage();
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -28,34 +35,17 @@ export function DemoCasual() {
     <div className="min-h-screen bg-beige text-charcoal font-sans selection:bg-terracotta selection:text-white pb-20 lg:pb-0">
       
       {/* SECTION 0 — NAVIGATION */}
-      {/* Usamos Glassmorphism pero más brillante y cálido para contrastar la vibra */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-terracotta/10 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group text-charcoal">
-            <span className="font-heading font-bold text-2xl tracking-tighter">
-              Resto<span className="text-terracotta">Sites</span>.
-            </span>
-          </Link>
-          <Link 
-            to="/" 
-            className="flex items-center gap-2 text-sm font-medium text-charcoal hover:text-terracotta transition-colors group bg-beige/50 px-5 py-2.5 rounded-full hover:bg-terracotta/10 backdrop-blur-md"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Home
-          </Link>
-        </div>
-      </nav>
+      <DemoNavbar theme="casual" />
 
       <main className="pt-20">
         
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[90vh] flex items-center justify-center bg-white overflow-hidden">
-          {/* Fondo sutil tipo cuadrícula o patrón brillante */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#FF4C1A0a_1px,transparent_1px),linear-gradient(to_bottom,#FF4C1A0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
           
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
             <motion.div {...fadeIn} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-terracotta/20 bg-terracotta/5 text-xs font-semibold tracking-widest uppercase mb-8 text-terracotta">
-              <Star className="w-3 h-3" /> Approachable & Warm
+              <Star className="w-3 h-3" /> {t.casual_badge}
             </motion.div>
             
             <motion.h1 
@@ -64,7 +54,7 @@ export function DemoCasual() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-heading text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-6 text-charcoal leading-[1.05]"
             >
-              Casual Restaurant <br/><span className="text-terracotta">Websites</span>
+              {t.casual_hero_title.split(' ').slice(0, -1).join(' ')} <br/><span className="text-terracotta">{t.casual_hero_title.split(' ').slice(-1)[0]}</span>
             </motion.h1>
             
             <motion.p 
@@ -73,7 +63,7 @@ export function DemoCasual() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-2xl text-charcoal/70 max-w-3xl mx-auto mb-10 leading-relaxed"
             >
-              Designed for relaxed dining, friendly brands, and everyday customers. Ideal for cafes, burger joints, pizzerias, and local spots that want to attract more daily visitors effortlessly.
+              {t.casual_hero_subtitle}
             </motion.p>
             
             <motion.div 
@@ -82,12 +72,12 @@ export function DemoCasual() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <a href="#pricing" className="px-8 py-4 bg-terracotta text-white rounded-2xl font-semibold text-lg tracking-wide hover:bg-[#e63f0d] hover:-translate-y-1 transition-all shadow-xl shadow-terracotta/30 inline-flex items-center gap-2 w-full sm:w-auto justify-center">
-                Start your website <ArrowRight className="w-5 h-5" />
-              </a>
-              <a href="#style" className="px-8 py-4 bg-beige border-2 border-transparent text-charcoal rounded-2xl font-semibold text-lg hover:border-charcoal/10 hover:bg-beige-dark transition-all w-full sm:w-auto justify-center text-center">
-                See How It Works
-              </a>
+              <button onClick={() => scrollToSection('pricing')} className="px-8 py-4 bg-terracotta text-white rounded-2xl font-semibold text-lg tracking-wide hover:bg-[#e63f0d] hover:-translate-y-1 transition-all shadow-xl shadow-terracotta/30 inline-flex items-center gap-2 w-full sm:w-auto justify-center">
+                {t.demo_start_website} <ArrowRight className="w-5 h-5" />
+              </button>
+              <button onClick={() => scrollToSection('style')} className="px-8 py-4 bg-beige border-2 border-transparent text-charcoal rounded-2xl font-semibold text-lg hover:border-charcoal/10 hover:bg-beige-dark transition-all w-full sm:w-auto justify-center text-center">
+                {t.casual_explore_btn}
+              </button>
             </motion.div>
           </div>
         </section>
@@ -97,10 +87,10 @@ export function DemoCasual() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeIn} className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                Built to bring them in, <span className="text-terracotta italic">daily.</span>
+                {t.casual_style_title.split(',')[0]}, <span className="text-terracotta italic">{t.casual_style_title.split(',')[1]?.trim()}</span>
               </h2>
               <p className="text-xl text-charcoal/70 leading-relaxed">
-                We remove the friction between a hungry customer searching on their phone and them walking through your front door.
+                {t.casual_style_subtitle}
               </p>
             </motion.div>
 
@@ -111,26 +101,10 @@ export function DemoCasual() {
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {[
-                {
-                  icon: <span className="text-2xl">👋</span>,
-                  title: "Friendly & Inviting",
-                  desc: "A warm design language that welcomes customers before they even smell the food."
-                },
-                {
-                  icon: <span className="text-2xl">⚡️</span>,
-                  title: "Action-Oriented",
-                  desc: "Easy navigation structured around quick decisions: Find the menu, find the location."
-                },
-                {
-                  icon: <span className="text-2xl">📱</span>,
-                  title: "Menu Accessibility",
-                  desc: "Clear, readable mobile menus so people can decide what to eat while on the go."
-                },
-                {
-                  icon: <span className="text-2xl">🔄</span>,
-                  title: "Drive Repeat Visits",
-                  desc: "Built-in hooks that encourage locals to stop by more often and become regulars."
-                }
+                { icon: <span className="text-2xl">👋</span>, title: t.casual_feat1_title, desc: t.casual_feat1_desc },
+                { icon: <span className="text-2xl">⚡️</span>, title: t.casual_feat2_title, desc: t.casual_feat2_desc },
+                { icon: <span className="text-2xl">📱</span>, title: t.casual_feat3_title, desc: t.casual_feat3_desc },
+                { icon: <span className="text-2xl">🔄</span>, title: t.casual_feat4_title, desc: t.casual_feat4_desc }
               ].map((feature, idx) => (
                 <motion.div key={idx} variants={item} className="p-8 bg-white rounded-[2rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                   <div className="w-14 h-14 rounded-2xl bg-beige flex items-center justify-center mb-6">
@@ -148,9 +122,11 @@ export function DemoCasual() {
         <section id="pricing" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeIn} className="text-center mb-16">
-              <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6">Transparent <span className="text-terracotta">Pricing</span></h2>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                {t.casual_pricing_title.split(' ')[0]} <span className="text-terracotta">{t.casual_pricing_title.split(' ').slice(1).join(' ')}</span>
+              </h2>
               <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-                No hidden fees. Just clear plans designed to fit local favorites and growing hotspots.
+                {t.casual_pricing_subtitle}
               </p>
             </motion.div>
 
@@ -158,13 +134,13 @@ export function DemoCasual() {
               {/* BASIC */}
               <motion.div {...fadeIn} className="bg-beige rounded-[2rem] p-8 lg:p-10 border border-charcoal/5 flex flex-col justify-between hover:border-terracotta/30 transition-colors">
                 <div>
-                  <h3 className="font-heading text-2xl font-bold mb-1">Basic</h3>
-                  <p className="text-charcoal/60 text-sm mb-6 font-medium">Starter Online Menu</p>
+                  <h3 className="font-heading text-2xl font-bold mb-1">{t.plan_basic}</h3>
+                  <p className="text-charcoal/60 text-sm mb-6 font-medium">{t.casual_basic_plan_desc}</p>
                   <div className="mb-8">
                     <span className="text-5xl font-bold tracking-tight">$250</span>
                   </div>
                   <ul className="space-y-4 mb-8">
-                    {["1 page website", "Delivery in 3–5 days", "Mobile optimized design", "Basic Local SEO Setup"].map((feature, i) => (
+                    {[t.casual_basic_f1, t.casual_basic_f2, t.casual_basic_f3, t.casual_basic_f4].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-charcoal/80 font-medium">
                         <Check className="w-5 h-5 text-terracotta shrink-0" />
                         <span>{feature}</span>
@@ -174,10 +150,10 @@ export function DemoCasual() {
                 </div>
                 <div className="space-y-3 mt-auto">
                   <a href="#basic-casual" className="block w-full py-3 px-6 rounded-xl border-2 border-charcoal/20 text-center font-bold text-charcoal hover:bg-charcoal/5 transition-colors">
-                    View features
+                    {t.demo_view_features}
                   </a>
                   <button className="block w-full py-3 px-6 rounded-xl bg-charcoal text-white text-center font-bold hover:bg-charcoal-light transition-colors shadow-md">
-                    Start Basic
+                    {t.demo_start_basic}
                   </button>
                 </div>
               </motion.div>
@@ -185,16 +161,16 @@ export function DemoCasual() {
               {/* ADVANCED */}
               <motion.div {...fadeIn} className="bg-charcoal text-white rounded-[2rem] p-8 lg:p-10 border-4 border-terracotta relative flex flex-col justify-between transform lg:-translate-y-4 shadow-2xl">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-terracotta text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-                  Most Popular
+                  {t.demo_most_popular}
                 </div>
                 <div>
-                  <h3 className="font-heading text-2xl font-bold mb-1 text-terracotta">Advanced</h3>
-                  <p className="text-white/70 text-sm mb-6 font-medium">More Daily Customers</p>
+                  <h3 className="font-heading text-2xl font-bold mb-1 text-terracotta">{t.plan_advanced}</h3>
+                  <p className="text-white/70 text-sm mb-6 font-medium">{t.casual_adv_plan_desc}</p>
                   <div className="mb-8">
                     <span className="text-5xl font-bold tracking-tight">$450</span>
                   </div>
                   <ul className="space-y-4 mb-8">
-                    {["Up to 3 pages", "Better SEO", "Animations", "Instagram integration", "Online Reservation System"].map((feature, i) => (
+                    {[t.casual_adv_f1, t.casual_adv_f2, t.casual_adv_f3, t.casual_adv_f4, t.casual_adv_f5].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-white/90 font-medium">
                         <Check className="w-5 h-5 text-terracotta shrink-0" />
                         <span>{feature}</span>
@@ -204,10 +180,10 @@ export function DemoCasual() {
                 </div>
                 <div className="space-y-3 mt-auto">
                   <a href="#advanced-casual" className="block w-full py-3 px-6 rounded-xl border-2 border-white/20 text-center font-bold text-white hover:bg-white/10 transition-colors">
-                    View features
+                    {t.demo_view_features}
                   </a>
                   <button className="block w-full py-3 px-6 rounded-xl bg-terracotta text-white text-center font-bold hover:bg-[#e63f0d] transition-colors shadow-[0_0_20px_rgba(255,76,26,0.4)]">
-                    Start Advanced
+                    {t.demo_start_advanced}
                   </button>
                 </div>
               </motion.div>
@@ -215,16 +191,16 @@ export function DemoCasual() {
               {/* PREMIUM */}
               <motion.div {...fadeIn} className="bg-beige rounded-[2rem] p-8 lg:p-10 border border-charcoal/5 flex flex-col justify-between hover:border-terracotta/30 transition-colors relative overflow-hidden">
                 <div className="absolute -right-8 top-8 rotate-45 bg-olive text-white px-10 py-1 text-xs font-bold uppercase tracking-wider">
-                  Best Value
+                  {t.demo_best_value}
                 </div>
                 <div>
-                  <h3 className="font-heading text-2xl font-bold mb-1">Premium</h3>
-                  <p className="text-charcoal/60 text-sm mb-6 font-medium">The Neighborhood Boss</p>
+                  <h3 className="font-heading text-2xl font-bold mb-1">{t.plan_premium}</h3>
+                  <p className="text-charcoal/60 text-sm mb-6 font-medium">{t.casual_prem_plan_desc}</p>
                   <div className="mb-8">
                     <span className="text-5xl font-bold tracking-tight">$850</span>
                   </div>
                   <ul className="space-y-4 mb-8">
-                    {["Custom restaurant design", "Up to 5 pages", "SEO + AI Search Optimization", "Online reservation system", "Local search optimization", "Performance optimization"].map((feature, i) => (
+                    {[t.casual_prem_f1, t.casual_prem_f2, t.casual_prem_f3, t.casual_prem_f4, t.casual_prem_f5, t.casual_prem_f6].map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-charcoal/80 font-medium">
                         <Check className="w-5 h-5 text-olive shrink-0" />
                         <span>{feature}</span>
@@ -234,10 +210,10 @@ export function DemoCasual() {
                 </div>
                 <div className="space-y-3 mt-auto">
                   <a href="#premium-casual" className="block w-full py-3 px-6 rounded-xl border-2 border-charcoal/20 text-center font-bold text-charcoal hover:bg-charcoal/5 transition-colors">
-                    View features
+                    {t.demo_view_features}
                   </a>
                   <button className="block w-full py-3 px-6 rounded-xl bg-charcoal text-white text-center font-bold hover:bg-charcoal-light transition-colors shadow-md">
-                    Start Premium
+                    {t.demo_start_premium}
                   </button>
                 </div>
               </motion.div>
@@ -263,44 +239,44 @@ export function DemoCasual() {
                         <div className="w-full h-8 bg-terracotta/20 rounded mt-2"></div>
                      </div>
                   </div>
-                  <p className="text-center font-medium text-charcoal/50 text-sm">Preview: Mobile Menu Layout</p>
+                  <p className="text-center font-medium text-charcoal/50 text-sm">{t.feat_basic_2_name}</p>
                 </div>
                 <div className="order-1 md:order-2">
                   <div className="inline-flex items-center gap-2 mb-4 bg-white px-4 py-2 rounded-full font-bold text-terracotta text-sm shadow-sm">
-                     <span className="w-6 h-6 rounded-full bg-terracotta/20 flex items-center justify-center">1</span> Starter Package
+                     <span className="w-6 h-6 rounded-full bg-terracotta/20 flex items-center justify-center">1</span> {t.plan_basic_badge}
                   </div>
-                  <h3 className="font-heading text-4xl font-bold mb-4">BASIC</h3>
+                  <h3 className="font-heading text-4xl font-bold mb-4">{t.plan_basic}</h3>
                   <p className="text-lg text-charcoal/70 mb-8">
-                    Get your menu, your hours, and your map online fast. Perfect for cafes and fast-casual spots that need a clean, highly functional digital home immediately.
+                    {t.casual_basic_sect_desc}
                   </p>
                   
                   <ul className="space-y-5">
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Smartphone className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Mobile Optimized Design</h4>
-                        <p className="text-sm text-charcoal/60">Because 80% of your customers are looking at your site on their phone while hungry.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_basic_2_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_basic_2_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Utensils className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Super clear Menu Showcase</h4>
-                        <p className="text-sm text-charcoal/60">No annoying PDFs. A real web menu that loads instantly and is easy to read.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_basic_3_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_basic_3_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><MapPin className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Find Us Fast</h4>
-                        <p className="text-sm text-charcoal/60">1-click calling and instant Google Maps routing so they never get lost.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_basic_4_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_basic_4_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4 items-start">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Search className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Basic Local SEO</h4>
-                        <p className="text-sm text-charcoal/60 mb-2">We setup the basics so you show up when someone Googles things like:</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_basic_6_name}</h4>
+                        <p className="text-sm text-charcoal/60 mb-2">{t.feat_basic_6_desc}</p>
                         <div className="flex flex-wrap gap-2">
                           <span className="text-xs bg-white text-charcoal font-medium px-3 py-1 rounded-md border border-charcoal/10">"burgers near me"</span>
                           <span className="text-xs bg-white text-charcoal font-medium px-3 py-1 rounded-md border border-charcoal/10">"coffee shop open now"</span>
@@ -317,45 +293,45 @@ export function DemoCasual() {
               <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                   <div className="inline-flex items-center gap-2 mb-4 bg-terracotta px-4 py-2 rounded-full font-bold text-white text-sm shadow-md">
-                     <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">2</span> Growth Package
+                     <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">2</span> {t.plan_advanced_badge}
                   </div>
-                  <h3 className="font-heading text-4xl font-bold mb-4">ADVANCED</h3>
+                  <h3 className="font-heading text-4xl font-bold mb-4">{t.plan_advanced}</h3>
                   <p className="text-lg text-charcoal/70 mb-6">
-                    Turn casual browsers into regular visitors. We add social proof, visual flair, and reservation tools that make visiting your restaurant the easiest choice of their day.
+                    {t.casual_adv_sect_desc}
                   </p>
                   
                   <div className="bg-white p-4 rounded-xl mb-8 border-l-4 border-terracotta shadow-sm">
-                    <p className="text-sm font-bold text-charcoal">Includes everything in Basic, PLUS:</p>
+                    <p className="text-sm font-bold text-charcoal">{t.demo_includes_basic_plus}</p>
                   </div>
 
                   <ul className="space-y-5">
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Globe className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Simple Booking System</h4>
-                        <p className="text-sm text-charcoal/60">Stop losing tables during busy hours. Let them book directly 24/7 without making a phone call.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_adv_1_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_adv_1_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Star className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Customer Review Feed</h4>
-                        <p className="text-sm text-charcoal/60">We stream your glowing 5-star Google reviews right onto the homepage to build instant trust.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_adv_4_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_adv_4_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Smartphone className="w-5 h-5 text-terracotta" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Instagram Sync</h4>
-                        <p className="text-sm text-charcoal/60">Keep your website looking fresh automatically by pulling your latest Instagram food pics directly into a gallery.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_adv_3_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_adv_3_desc}</p>
                       </div>
                     </li>
                   </ul>
                 </div>
                 <div className="bg-charcoal text-white p-8 rounded-[2rem] shadow-xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
                    <div className="flex justify-between items-center mb-6">
-                     <h4 className="font-heading font-bold text-xl">Book a Table</h4>
-                     <span className="bg-terracotta text-white text-xs px-2 py-1 rounded font-bold">Fast</span>
+                     <h4 className="font-heading font-bold text-xl">{t.demo_reserve_table}</h4>
+                     <span className="bg-terracotta text-white text-xs px-2 py-1 rounded font-bold">{t.plan_basic_badge}</span>
                    </div>
                    <div className="grid grid-cols-2 gap-3 mb-4">
                      <div className="bg-white/10 p-3 rounded-xl border border-white/5 text-sm text-center">Today</div>
@@ -374,54 +350,54 @@ export function DemoCasual() {
               <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1 bg-gradient-to-br from-terracotta to-[#d63a10] p-10 rounded-[2rem] shadow-2xl text-white transform -rotate-1 hover:rotate-0 transition-transform duration-300">
                   <Sparkles className="w-12 h-12 text-white/50 mb-6" />
-                  <h4 className="font-heading text-3xl font-bold mb-4">Be the Local Favorite</h4>
+                  <h4 className="font-heading text-3xl font-bold mb-4">{t.casual_prem_plan_desc}</h4>
                   <p className="text-white/80 font-medium mb-8">
-                    When someone visits your city and searches "where to eat nearby", we make sure AI assistants and search algorithms point them straight to your door.
+                    {t.feat_prem_3_desc}
                   </p>
                   <div className="flex flex-col gap-3">
                      <div className="bg-white/20 backdrop-blur-md rounded-xl p-4 flex gap-3 text-sm font-medium">
-                       <Check className="w-5 h-5 text-white shrink-0" /> AI-Ready Menu Format
+                       <Check className="w-5 h-5 text-white shrink-0" /> {t.feat_prem_2_name}
                      </div>
                      <div className="bg-white/20 backdrop-blur-md rounded-xl p-4 flex gap-3 text-sm font-medium">
-                       <Check className="w-5 h-5 text-white shrink-0" /> Neighborhood Domination SEO
+                       <Check className="w-5 h-5 text-white shrink-0" /> {t.feat_prem_3_name}
                      </div>
                   </div>
                 </div>
                 <div className="order-1 md:order-2">
                   <div className="inline-flex items-center gap-2 mb-4 bg-charcoal px-4 py-2 rounded-full font-bold text-white text-sm shadow-md">
-                     <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">3</span> Authority Package
+                     <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">3</span> {t.plan_premium_badge}
                   </div>
-                  <h3 className="font-heading text-4xl font-bold mb-4">PREMIUM</h3>
+                  <h3 className="font-heading text-4xl font-bold mb-4">{t.plan_premium}</h3>
                   <p className="text-lg text-charcoal/70 mb-6">
-                    A custom-crafted digital machine designed to make you the undisputed neighborhood favorite. We use smart tech so finding your restaurant is completely frictionless.
+                    {t.casual_prem_sect_desc}
                   </p>
                   
                   <div className="bg-white p-4 rounded-xl mb-8 border-l-4 border-charcoal shadow-sm">
-                    <p className="text-sm font-bold text-charcoal">Includes everything in Advanced, PLUS:</p>
+                    <p className="text-sm font-bold text-charcoal">{t.demo_includes_adv_plus}</p>
                   </div>
 
                   <ul className="space-y-5">
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Sparkles className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">AI Chatbot Assistant</h4>
-                        <p className="text-sm text-charcoal/60">An automated helper that answers questions like "Are you dog friendly?" and "Do you have gluten-free options?" instantly.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_prem_1_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_prem_1_desc}</p>
                       </div>
                     </li>
                     <li className="flex gap-4 items-start">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Search className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">AI Search & Geo Optimization</h4>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_prem_3_name}</h4>
                         <p className="text-sm text-charcoal/60">
-                          We format your website so that when locals ask ChatGPT or Google "What's a good casual spot around here?", your restaurant is suggested as the top answer.
+                          {t.feat_prem_3_desc}
                         </p>
                       </div>
                     </li>
                     <li className="flex gap-4">
                       <div className="mt-1 bg-white p-2 rounded-lg shadow-sm"><Globe className="w-5 h-5 text-olive" /></div>
                       <div>
-                        <h4 className="font-bold text-charcoal mb-1">Auto-Translation</h4>
-                        <p className="text-sm text-charcoal/60">Automatically displays the menu in the tourist's native language, completely removing the ordering barrier.</p>
+                        <h4 className="font-bold text-charcoal mb-1">{t.feat_prem_2_name}</h4>
+                        <p className="text-sm text-charcoal/60">{t.feat_prem_2_desc}</p>
                       </div>
                     </li>
                   </ul>
@@ -437,13 +413,13 @@ export function DemoCasual() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
             <motion.div {...fadeIn}>
               <h2 className="font-heading text-5xl md:text-6xl font-bold tracking-tight mb-8">
-                Get more customers with a <br/><span className="underline decoration-4 underline-offset-8 decoration-white/30">better website.</span>
+                {t.casual_cta_title.split('better')[0]}<br/><span className="underline decoration-4 underline-offset-8 decoration-white/30">{t.casual_cta_title.includes('better') ? 'better website.' : t.casual_cta_title.split('.')[1]?.trim() ?? ''}</span>
               </h2>
               <p className="text-xl md:text-2xl text-white/90 font-medium max-w-2xl mx-auto mb-10">
-                Join the local favorites who modernized their presence and watched their walk-in traffic multiply.
+                {t.casual_cta_subtitle}
               </p>
               <button className="px-10 py-5 bg-charcoal text-white rounded-2xl font-bold tracking-wide hover:bg-charcoal-light transition-all hover:-translate-y-1 inline-flex items-center gap-2 text-lg shadow-xl">
-                Start your website <ArrowRight className="w-5 h-5" />
+                {t.demo_start_website} <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>
           </div>
@@ -452,7 +428,7 @@ export function DemoCasual() {
       
       {/* Simple Footer just for the standalone page */}
       <footer className="bg-charcoal pt-16 pb-8 text-center text-beige/50 text-sm">
-         <p>© {new Date().getFullYear()} RestoSites. Built for local favorites.</p>
+         <p>© {new Date().getFullYear()} {t.casual_footer}</p>
       </footer>
     </div>
   );
